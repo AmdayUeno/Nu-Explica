@@ -1,0 +1,50 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Home",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {},
+              "definition": "c:nuExplicaHome",
+              "id": "d11e87c0-7f25-4db7-ba0f-b97839a35689",
+              "type": "component"
+            }
+          ],
+          "id": "5ebf2be0-b6fd-4829-8050-b4ce35c86a2d",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "Investimentos explicados do zero, sem jargão. Protótipo educativo com IA.",
+                "pageTitle": "Nu Explica",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "9caebf9a-8711-4f1a-98df-16e2429a86d0",
+              "type": "component"
+            }
+          ],
+          "id": "a42c68a9-62a1-4337-b28b-afd080879961",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "aa387a4a-a773-48a8-8d5a-af89692c4b64",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "home"
+  },
+  "urlName": "home"
+}

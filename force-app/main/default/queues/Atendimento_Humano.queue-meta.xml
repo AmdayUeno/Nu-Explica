@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Atendimento Humano</name>
+    <queueMembers>
+        <users>
+            <user>amanda.ayumi004.702352a33231@agentforce.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Atendimento_Humano_Routing</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>

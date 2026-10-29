@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Definir_Resultado</name>
+        <label>Definir resultado</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>perfil</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fPerfil</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>pontuacao</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fPontuacao</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>priorizar_reserva</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fPriorizarReserva</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Calcula um perfil de investidor ilustrativo (educativo) para o agente Nu Explica a partir de 4 respostas da triagem. Cada resposta vale de 1 a 3 pontos: 4-6 conservador, 7-9 moderado, 10-12 arrojado. Retorna &quot;incompleto&quot; se alguma resposta nao for reconhecida. Nao e suitability nem recomendacao.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>fPerfil</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT({!fRespostasValidas}), &quot;incompleto&quot;, IF({!fPontuacao} &lt;= 6, &quot;conservador&quot;, IF({!fPontuacao} &lt;= 9, &quot;moderado&quot;, &quot;arrojado&quot;)))</expression>
+    </formulas>
+    <formulas>
+        <description>Pontos da pergunta sobre experiencia com investimentos.</description>
+        <name>fPontosExperiencia</name>
+        <dataType>Number</dataType>
+        <expression>CASE(LOWER(TRIM({!experiencia})), &quot;nenhuma&quot;, 1, &quot;pouca&quot;, 2, &quot;alguma&quot;, 3, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Pontos da pergunta sobre prazo do objetivo.</description>
+        <name>fPontosPrazo</name>
+        <dataType>Number</dataType>
+        <expression>CASE(LOWER(TRIM({!prazo})), &quot;curto&quot;, 1, &quot;medio&quot;, 2, &quot;médio&quot;, 2, &quot;longo&quot;, 3, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Pontos da pergunta sobre reacao a uma queda temporaria.</description>
+        <name>fPontosReacao</name>
+        <dataType>Number</dataType>
+        <expression>CASE(LOWER(TRIM({!reacao_queda})), &quot;resgatar&quot;, 1, &quot;esperar&quot;, 2, &quot;aplicar_mais&quot;, 3, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Pontos da pergunta sobre reserva de emergencia.</description>
+        <name>fPontosReserva</name>
+        <dataType>Number</dataType>
+        <expression>CASE(LOWER(TRIM({!reserva})), &quot;nao&quot;, 1, &quot;não&quot;, 1, &quot;parcial&quot;, 2, &quot;sim&quot;, 3, 0)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>fPontuacao</name>
+        <dataType>Number</dataType>
+        <expression>{!fPontosPrazo} + {!fPontosReserva} + {!fPontosReacao} + {!fPontosExperiencia}</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Sem reserva completa, a trilha deve focar na reserva antes de outros investimentos.</description>
+        <name>fPriorizarReserva</name>
+        <dataType>Boolean</dataType>
+        <expression>{!fPontosReserva} &lt; 3</expression>
+    </formulas>
+    <formulas>
+        <name>fRespostasValidas</name>
+        <dataType>Boolean</dataType>
+        <expression>{!fPontosPrazo} &gt; 0 &amp;&amp; {!fPontosReserva} &gt; 0 &amp;&amp; {!fPontosReacao} &gt; 0 &amp;&amp; {!fPontosExperiencia} &gt; 0</expression>
+    </formulas>
+    <interviewLabel>Nu Explica Calcular Perfil {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Nu Explica - Calcular Perfil</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Definir_Resultado</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Experiencia com investimentos: nenhuma, pouca ou alguma.</description>
+        <name>experiencia</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Perfil ilustrativo: conservador, moderado, arrojado ou incompleto.</description>
+        <name>perfil</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Soma dos pontos (4 a 12).</description>
+        <name>pontuacao</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Prazo do objetivo: curto (ate 1 ano), medio (1 a 5 anos) ou longo (mais de 5 anos).</description>
+        <name>prazo</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Verdadeiro quando a pessoa ainda nao tem reserva de emergencia completa.</description>
+        <name>priorizar_reserva</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Reacao a uma queda temporaria: resgatar, esperar ou aplicar_mais.</description>
+        <name>reacao_queda</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Reserva de emergencia: sim, parcial ou nao.</description>
+        <name>reserva</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

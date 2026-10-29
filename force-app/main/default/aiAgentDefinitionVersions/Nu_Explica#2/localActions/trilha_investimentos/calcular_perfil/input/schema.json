@@ -1,0 +1,35 @@
+{
+  "required" : [ "prazo", "reserva", "reacao_queda", "experiencia" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "experiencia" : {
+      "title" : "Experiência",
+      "description" : "Experiência com investimentos. Use exatamente: nenhuma, pouca ou alguma.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "prazo" : {
+      "title" : "Prazo",
+      "description" : "Prazo do objetivo. Use exatamente: curto, medio ou longo.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "reacao_queda" : {
+      "title" : "Reação a queda",
+      "description" : "Reação a uma queda temporária. Use exatamente: resgatar, esperar ou aplicar_mais.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "reserva" : {
+      "title" : "Reserva",
+      "description" : "Situação da reserva de emergência. Use exatamente: sim, parcial ou nao.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

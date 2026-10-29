@@ -1,0 +1,42 @@
+{
+  "type": "sfdc_cms__themeLayout",
+  "title": "Service Not Available Theme Layout",
+  "contentBody": {
+    "component": {
+      "attributes": {},
+      "children": [
+        {
+          "id": "4ad40f2f-9360-45ca-8493-c84f350a470c",
+          "name": "header",
+          "title": "Theme Header",
+          "type": "region"
+        },
+        {
+          "id": "03b65808-5eae-486f-ac91-8f6ce74e0bc2",
+          "name": "footer",
+          "title": "Theme Footer",
+          "type": "region",
+          "children": [
+            {
+              "id": "aff9c38b-6095-402d-96e4-f45da45c7a5f",
+              "type": "component",
+              "definition": "experience_messaging:embeddedMessaging",
+              "attributes": {
+                "deploymentName": "Nu_Explica_Web",
+                "scrtUrl": "https://orgfarm-821eaec6c3-dev-ed.develop.my.salesforce-scrt.com",
+                "siteEndpoint": "https://orgfarm-821eaec6c3-dev-ed.develop.my.site.com/ESWNuExplicaWeb1793249882384",
+                "isExpSiteAuthMode": false,
+                "hideChatButtonOnLoad": "Default",
+                "clientVersion": "WebV2"
+              }
+            }
+          ]
+        }
+      ],
+      "definition": "community_layout:simpleThemeLayout",
+      "id": "2c41c172-9c29-4757-85ea-0105164c7ae7",
+      "type": "component"
+    }
+  },
+  "urlName": "service-not-available-theme-layout"
+}

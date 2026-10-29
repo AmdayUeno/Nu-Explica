@@ -1,0 +1,79 @@
+<template>
+    <div class="page">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="brand">
+                    <span class="brand-name">Nu Explica</span>
+                    <span class="badge">Protótipo</span>
+                </div>
+                <nav class="nav" aria-label="Navegação principal">
+                    <a href="#como-funciona" class="nav-link" data-target="como-funciona" onclick={handleScroll}>Como funciona</a>
+                    <a href="#temas" class="nav-link" data-target="temas" onclick={handleScroll}>Temas</a>
+                    <button type="button" class="nav-link nav-button" onclick={handleOpenChat}>Falar com uma pessoa</button>
+                    <button type="button" class="btn btn-primary btn-small" onclick={handleOpenChat}>Abrir o chat</button>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <p class="eyebrow">Educação financeira com IA</p>
+                <h1 class="hero-title">Investimentos explicados do zero, sem jargão.</h1>
+                <p class="hero-text">
+                    Converse com o Nu Explica e entenda CDI, renda fixa, risco e liquidez uma etapa de cada vez.
+                    Se preferir, uma pessoa do time continua a conversa com você.
+                </p>
+                <div class="actions">
+                    <button type="button" class="btn btn-primary" onclick={handleOpenChat}>Começar uma conversa</button>
+                    <button type="button" class="btn btn-secondary" data-target="temas" onclick={handleScroll}>Ver temas</button>
+                </div>
+                <p class="note">Não faz recomendações nem operações. Conteúdo apenas educativo.</p>
+            </div>
+        </section>
+
+        <section class="section" data-section="como-funciona" id="como-funciona">
+            <div class="container">
+                <h2 class="section-title">Como funciona</h2>
+                <p class="section-subtitle">Uma conversa simples, no seu ritmo, com uma pessoa por perto quando precisar.</p>
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="card-title">Pergunte do seu jeito</h3>
+                        <p class="card-text">Sem termos técnicos. Escreva a dúvida como falaria com um amigo.</p>
+                    </article>
+                    <article class="card">
+                        <h3 class="card-title">Aprenda por etapas</h3>
+                        <p class="card-text">O Nu Explica vai do básico ao mais elaborado, conferindo se ficou claro antes de seguir.</p>
+                    </article>
+                    <article class="card">
+                        <h3 class="card-title">Fale com uma pessoa</h3>
+                        <p class="card-text">Escreva “quero falar com um atendente” e a conversa segue com alguém do time.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-tinted" data-section="temas" id="temas">
+            <div class="container">
+                <h2 class="section-title">Temas para começar</h2>
+                <p class="section-subtitle">Escolha um assunto e o chat abre já na conversa certa.</p>
+                <div class="topics">
+                    <template for:each={topics} for:item="topic">
+                        <button key={topic.key} type="button" class="btn btn-topic" data-topic={topic.label} onclick={handleTopic}>
+                            {topic.label}
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-brand">Nu Explica</p>
+                <p class="footer-text">
+                    Protótipo de demonstração, não oficial e sem vínculo com o Nubank. O conteúdo é educativo e não
+                    constitui recomendação de investimento.
+                </p>
+            </div>
+        </footer>
+    </div>
+</template>

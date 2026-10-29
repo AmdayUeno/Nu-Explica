@@ -1,0 +1,30 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "perfil" : {
+      "title" : "Perfil",
+      "description" : "Perfil ilustrativo: conservador, moderado, arrojado ou incompleto.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "pontuacao" : {
+      "title" : "Pontuação",
+      "description" : "Pontuação interna da triagem, de 4 a 12.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "priorizar_reserva" : {
+      "title" : "Priorizar reserva",
+      "description" : "Verdadeiro quando a pessoa ainda não tem reserva de emergência completa.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
