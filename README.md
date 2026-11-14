@@ -4,16 +4,16 @@ Um agente de IA que ensina investimentos do zero, sem jargão, uma etapa de cada
 
 Protótipo feito em **Agentforce** (Salesforce) para o desafio **AI Builder Interns**, explorando não só a construção de um agente, mas também decisões de produto, segurança e uso responsável de inteligência artificial.
 
-> ⚠️ Protótipo de demonstração, **não oficial e sem vínculo com o Nubank**. O conteúdo é educativo e não constitui recomendação de investimento. Todos os valores e a persona são fictícios.
+> Protótipo de demonstração, **não oficial e sem vínculo com o Nubank**. O conteúdo é educativo e não constitui recomendação de investimento. Todos os valores e a persona são fictícios.
 
 ## 🔗 Experimente o Agente
 
-👉 **[Abrir o Nu Explica](https://orgfarm-821eaec6c3-dev-ed.develop.my.site.com/nuexplica/)**
+**[Abrir o Nu Explica](https://orgfarm-821eaec6c3-dev-ed.develop.my.site.com/nuexplica/)**
 
 Clique no botão de chat no canto da página para conversar com o agente.  
 Não envie dados reais (CPF, senhas, saldos).
 
-## ✨ Ideia do Projeto
+## Ideia do Projeto
 
 Quem nunca investiu esbarra em três barreiras:
 
@@ -27,7 +27,7 @@ O Nu Explica conversa no ritmo da pessoa, ensina com exemplos do dia a dia e pro
 Ele foi pensado a partir da **Júlia**, persona fictícia de 26 anos, assistente administrativa, que sobra uns R$ 300 por mês e travou em "100% do CDI".  
 Frase dela: *"Só queria saber por onde começar sem me sentir burra."*
 
-## 💬 O que o Nu Explica faz
+## O que o Nu Explica faz
 
 * Trilha de **7 etapas**, com uma ideia por mensagem
 * Respostas ancoradas numa **base de conhecimento aprovada** (PDF na Data Library)
@@ -35,14 +35,14 @@ Frase dela: *"Só queria saber por onde começar sem me sentir burra."*
 * **Proteção** em golpe, roubo, dívida e situações de crise
 * **Transbordo** para uma pessoa do time quando a pessoa pede
 
-### 🚫 O que ele não faz
+### O que ele não faz
 
 * Recomendar produto de investimento (isso é *suitability*, atividade regulada pela Resolução CVM 30)
 * Informar taxas ou dados reais em tempo real
 * Operar a conta ou aplicar dinheiro
 * Resolver fatura e fraude, que seguem pelos canais oficiais
 
-## 🧠 IA no Desenvolvimento
+## IA no Desenvolvimento
 
 A IA foi usada como aliada em várias frentes:
 
@@ -55,7 +55,7 @@ Uma decisão que revisei no caminho: pedi uma triagem que indicasse o melhor inv
 Revisando, percebi que isso é recomendação.  
 Mudei o desenho: o perfil é explicado só por características (liquidez, oscilação, prazo), com aviso de que não é recomendação, e a conta é feita por um **Flow**, não pela IA.
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 * Salesforce Developer Edition (gratuita)
 * Agentforce com **Agent Script**
@@ -67,21 +67,21 @@ Mudei o desenho: o perfil é explicado só por características (liquidez, oscil
 * Salesforce CLI (`sf`) e Salesforce DX (API 68.0)
 * Python (script que gera o PDF da base)
 
-## 🎨 Identidade Visual
+## Identidade Visual
 
 * Roxo como cor principal (`#820AD1`), com tema claro e escuro
 * Tipografia **DM Sans**
 * Interface de chat simples, com respostas rápidas ("Começar pelo básico", "O que é CDI?")
 * Avisos claros de que é um protótipo educativo, em todas as telas
 
-## 📱 Experiência
+## Experiência
 
 * Página inicial com chat integrado e temas para começar: renda fixa, CDI, Tesouro Direto, reserva de emergência, risco e liquidez, fundos
 * Uma ideia por mensagem, com no máximo uma pergunta por vez
 * Layout pensado para o celular
 * Transbordo simples: basta escrever *"quero falar com um atendente"* e a conversa continua com alguém do time, que já vê o que foi conversado
 
-## 🧪 Testes e Resultados
+## Testes e Resultados
 
 Foram registradas cerca de **30 conversas de teste**, em preview e no site público:
 
@@ -91,7 +91,7 @@ Foram registradas cerca de **30 conversas de teste**, em preview e no site públ
 
 > Amostras pequenas: evidência de comportamento, não prova estatística.
 
-### 🎯 Metas (hipóteses de piloto)
+### Metas (hipóteses de piloto)
 
 | Meta | O que medir | Hipótese |
 | --- | --- | --- |
@@ -102,7 +102,7 @@ Foram registradas cerca de **30 conversas de teste**, em preview e no site públ
 
 Todas as metas são hipóteses: nenhuma melhoria foi comprovada.
 
-## 🏗️ Como funciona
+## Como funciona
 
 ```
 Site (Experience Cloud) → Widget de chat → Canal de mensagens → Agente Nu Explica
@@ -116,7 +116,7 @@ Site (Experience Cloud) → Widget de chat → Canal de mensagens → Agente Nu 
         └── Flow calcular_perfil (triagem)
 ```
 
-## 📁 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```
 Documentos/          Base de conhecimento (PDF), roteiros de teste e de demonstração
@@ -135,7 +135,7 @@ Dentro de `Projeto/nu-explica/`:
 | `backup/` | Agente original, antes das mudanças |
 | `scripts-de-teste/` | Scripts de preview e o teste do Flow em Apex |
 
-## 🚀 Como Rodar
+## Como Rodar
 
 **Pré-requisitos:** [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) com comandos `sf agent`, e uma org com Agentforce e Data Cloud habilitados.
 
@@ -152,10 +152,7 @@ sf project deploy start -m "AiAuthoringBundle:Nu_Explica" -m "Flow:Nu_Explica_Ca
 # Publicar o agente
 sf agent publish authoring-bundle --api-name Nu_Explica -o minha-org --json
 ```
-
-> Os scripts de teste apontam para `C:\Users\Ayumi\nu-explica`; ajuste o caminho se usar outra cópia.
-
-## 🔮 Próximos Passos
+## Próximos Passos
 
 * Botões de tema da página abrindo o chat já no assunto certo
 * Widget de chat totalmente em português
@@ -163,17 +160,13 @@ sf agent publish authoring-bundle --api-name Nu_Explica -o minha-org --json
 * Gravar a nota de satisfação (CSAT) de cada conversa
 * Bateria de testes automática a cada versão
 
-## 💡 Aprendizados
+## Aprendizados
 
 * Segurança vem em camadas: regra no prompt, base aprovada, estrutura do agente, cálculo fora da IA e filtros da plataforma
 * O que não pode dar errado deve virar **estrutura**, não apenas instrução em texto
 * Educar não é recomendar, e essa fronteira precisa estar desenhada desde o início
 * Testar com poucas conversas ajuda a ajustar, mas não prova que o agente acerta sempre
 
-## 📄 Licença
+## Autora
 
-[Defina a licença do projeto ou remova esta seção.]
-
-## 👩‍💻 Autora
-
-[Seu nome] · [LinkedIn ou e-mail]
+Amanda Ueno · https://www.linkedin.com/in/amanda-ueno/
